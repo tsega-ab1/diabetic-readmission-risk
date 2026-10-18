@@ -1,0 +1,90 @@
+{
+  "typical": {
+    "probability_30d_readmission": 0.4857,
+    "risk_tier": "Medium",
+    "predicted_high_risk_flag": false,
+    "decision_threshold_used": 0.51,
+    "input_warnings": null,
+    "disclaimer": "This prototype is for academic and research demonstration purposes only. It is not a medical diagnosis, does not replace professional clinical judgment, and has not been clinically validated for real-world patient care."
+  },
+  "higher_risk": {
+    "probability_30d_readmission": 0.69,
+    "risk_tier": "High",
+    "predicted_high_risk_flag": true,
+    "decision_threshold_used": 0.51,
+    "input_warnings": null,
+    "disclaimer": "This prototype is for academic and research demonstration purposes only. It is not a medical diagnosis, does not replace professional clinical judgment, and has not been clinically validated for real-world patient care."
+  },
+  "lower_risk": {
+    "probability_30d_readmission": 0.2377,
+    "risk_tier": "Low",
+    "predicted_high_risk_flag": false,
+    "decision_threshold_used": 0.51,
+    "input_warnings": null,
+    "disclaimer": "This prototype is for academic and research demonstration purposes only. It is not a medical diagnosis, does not replace professional clinical judgment, and has not been clinically validated for real-world patient care."
+  },
+  "edge_extreme_values": {
+    "probability_30d_readmission": 0.8396,
+    "risk_tier": "High",
+    "predicted_high_risk_flag": true,
+    "decision_threshold_used": 0.51,
+    "input_warnings": [
+      "Value 132 for 'num_lab_procedures' is outside the range seen in training (1-129); the prediction may be unreliable"
+    ],
+    "disclaimer": "This prototype is for academic and research demonstration purposes only. It is not a medical diagnosis, does not replace professional clinical judgment, and has not been clinically validated for real-world patient care."
+  },
+  "missing_invalid": {
+    "probability_30d_readmission": 0.43,
+    "risk_tier": "Medium",
+    "predicted_high_risk_flag": false,
+    "decision_threshold_used": 0.51,
+    "input_warnings": [
+      "Missing required field: num_lab_procedures",
+      "Missing required field: num_procedures",
+      "Missing required field: num_medications",
+      "Missing required field: number_outpatient",
+      "Missing required field: number_emergency",
+      "Missing required field: number_inpatient",
+      "Missing required field: number_diagnoses",
+      "Missing required field: race",
+      "Missing required field: gender",
+      "Missing required field: payer_code",
+      "Missing required field: medical_specialty",
+      "Missing required field: max_glu_serum",
+      "Missing required field: A1Cresult",
+      "Missing required field: change",
+      "Missing required field: diabetesMed",
+      "Missing required field: diag_1_group",
+      "Missing required field: diag_2_group",
+      "Missing required field: diag_3_group",
+      "Missing required field: admission_type_id",
+      "Missing required field: discharge_disposition_id",
+      "Missing required field: admission_source_id",
+      "Missing required field: metformin",
+      "Missing required field: repaglinide",
+      "Missing required field: nateglinide",
+      "Missing required field: chlorpropamide",
+      "Missing required field: glimepiride",
+      "Missing required field: acetohexamide",
+      "Missing required field: glipizide",
+      "Missing required field: glyburide",
+      "Missing required field: tolbutamide",
+      "Missing required field: pioglitazone",
+      "Missing required field: rosiglitazone",
+      "Missing required field: acarbose",
+      "Missing required field: miglitol",
+      "Missing required field: troglitazone",
+      "Missing required field: tolazamide",
+      "Missing required field: examide",
+      "Missing required field: citoglipton",
+      "Missing required field: insulin",
+      "Missing required field: glyburide-metformin",
+      "Missing required field: glipizide-metformin",
+      "Missing required field: glimepiride-pioglitazone",
+      "Missing required field: metformin-rosiglitazone",
+      "Missing required field: metformin-pioglitazone",
+      "Field 'time_in_hospital' must be numeric, got 'oops'"
+    ],
+    "disclaimer": "This prototype is for academic and research demonstration purposes only. It is not a medical diagnosis, does not replace professional clinical judgment, and has not been clinically validated for real-world patient care."
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "selected_model": "LightGBM",
+  "threshold": 0.51,
+  "test_metrics": {
+    "roc_auc": 0.6856,
+    "pr_auc": 0.239,
+    "recall": 0.5289,
+    "precision": 0.2014,
+    "f1": 0.2917,
+    "accuracy": 0.7095,
+    "confusion_matrix": [
+      [
+        9653,
+        3525
+      ],
+      [
+        792,
+        889
+      ]
+    ],
+    "threshold_used": 0.51,
+    "brier_score": 0.2028
+  },
+  "validation_comparison": {
+    "roc_auc": {
+      "LogisticRegression (baseline)": 0.667,
+      "RandomForest": 0.6643,
+      "HistGradientBoosting (tuned)": 0.6673,
+      "XGBoost": 0.6739,
+      "LightGBM": 0.6743
+    },
+    "pr_auc": {
+      "LogisticRegression (baseline)": 0.2225,
+      "RandomForest": 0.2102,
+      "HistGradientBoosting (tuned)": 0.227,
+      "XGBoost": 0.2332,
+      "LightGBM": 0.2378
+    },
+    "recall": {
+      "LogisticRegression (baseline)": 0.5466,
+      "RandomForest": 0.5221,
+      "HistGradientBoosting (tuned)": 0.5501,
+      "XGBoost": 0.5675,
+      "LightGBM": 0.5262
+    },
+    "precision": {
+      "LogisticRegression (baseline)": 0.1849,
+      "RandomForest": 0.1868,
+      "HistGradientBoosting (tuned)": 0.1806,
+      "XGBoost": 0.1868,
+      "LightGBM": 0.1944
+    },
+    "f1": {
+      "LogisticRegression (baseline)": 0.2763,
+      "RandomForest": 0.2752,
+      "HistGradientBoosting (tuned)": 0.2719,
+      "XGBoost": 0.2811,
+      "LightGBM": 0.2839
+    },
+    "accuracy": {
+      "LogisticRegression (baseline)": 0.6692,
+      "RandomForest": 0.6821,
+      "HistGradientBoosting (tuned)": 0.6597,
+      "XGBoost": 0.6646,
+      "LightGBM": 0.6933
+    },
+    "brier_score": {
+      "LogisticRegression (baseline)": 0.2243,
+      "RandomForest": 0.2218,
+      "HistGradientBoosting (tuned)": 0.2174,
+      "XGBoost": 0.2169,
+      "LightGBM": 0.204
+    }
+  },
+  "success_criteria": [
+    {
+      "criterion": "ROC-AUC",
+      "target": ">= 0.68",
+      "actual": "0.6856",
+      "met": "True"
+    },
+    {
+      "criterion": "Recall (<30d class)",
+      "target": ">= 0.50",
+      "actual": "0.5289",
+      "met": "True"
+    },
+    {
+      "criterion": "PR-AUC",
+      "target": ">= 0.20",
+      "actual": "0.239",
+      "met": "True"
+    },
+    {
+      "criterion": "AUC gain vs. logistic regression (%)",
+      "target": ">= 5",
+      "actual": "1.71",
+      "met": "False"
+    },
+    {
+      "criterion": "Top-20% risk capture of readmissions",
+      "target": ">= 0.40",
+      "actual": "0.401",
+      "met": "True"
+    },
+    {
+      "criterion": "Single-prediction latency, worst of 20 (s)",
+      "target": "<= 2",
+      "actual": "0.0185",
+      "met": "True"
+    }
+  ]
+}

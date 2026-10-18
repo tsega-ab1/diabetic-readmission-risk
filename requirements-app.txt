@@ -1,0 +1,11 @@
+# Lightweight install: just enough to run the web app (app.py), the tests and src/predict.py.
+# Use this one if you only want to try the app. For the notebook as well, use requirements.txt.
+#
+# Python 3.10 - 3.13 (3.12 recommended). The saved model is a pickle, so the exact scikit-learn and
+# LightGBM versions below matter.
+pandas==2.2.3
+numpy>=1.26,<2.3
+scikit-learn==1.6.1
+lightgbm==4.7.0
+joblib>=1.3
+streamlit>=1.28

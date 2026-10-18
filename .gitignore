@@ -1,0 +1,17 @@
+# virtual environments
+.venv/
+venv/
+env/
+# Python caches
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+# local secrets / logs
+.streamlit/secrets.toml
+*.log
