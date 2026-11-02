@@ -14,7 +14,7 @@ readmitted within 30 days of discharge. It is built on the UCI *Diabetes 130-US 
 
 ## Module 6 portfolio: where to find everything
 
-**Live demo (Streamlit Community Cloud):** STREAMLIT_URL_HERE
+**Live demo (Streamlit Community Cloud):** https://diabetic-readmission-risk-cx.streamlit.app/
 **Source code (GitHub):** <https://github.com/tsega-ab1/diabetic-readmission-risk>
 **Presentation video:** submitted as a separate file in Canvas (script: `docs/VIDEO_SCRIPT.md`).
 
