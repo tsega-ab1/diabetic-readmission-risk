@@ -1,0 +1,12 @@
+# Everything needed to run notebooks/module5_ai_project_colab.ipynb on your own computer.
+# (In Google Colab you do not need this: the main libraries are preinstalled.)
+-r requirements.txt
+matplotlib>=3.7
+seaborn>=0.12
+xgboost>=2.0
+shap>=0.44
+ipywidgets>=8
+jupyter
+pytest>=7.4
+# Versions used for the independent re-run: numpy 2.2.6, matplotlib 3.10.8, seaborn 0.13.2, xgboost 3.4.1,
+# shap 0.53.0, ipywidgets 8.1.9.

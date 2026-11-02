@@ -1,0 +1,3 @@
+# Experiment tracking: scripts/log_experiments_mlflow.py
+-r requirements.txt
+mlflow>=2.10

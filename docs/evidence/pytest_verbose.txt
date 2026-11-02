@@ -1,0 +1,27 @@
+# Automated test evidence (pytest, verbose)
+# Run on 2026-11-02 from the project root: python -m pytest tests -v
+
+tests/test_api.py::test_health_ok PASSED                                 [  4%]
+tests/test_api.py::test_model_info_has_thresholds_and_metrics PASSED     [  8%]
+tests/test_api.py::test_predict_matches_streamlit_path PASSED            [ 13%]
+tests/test_api.py::test_missing_and_invalid_values_do_not_crash PASSED   [ 17%]
+tests/test_api.py::test_unexpected_category_and_extreme_values_warn PASSED [ 21%]
+tests/test_api.py::test_identifiers_are_ignored_not_used PASSED          [ 26%]
+tests/test_api.py::test_malformed_request_is_rejected_cleanly PASSED     [ 30%]
+tests/test_project.py::test_icd9_grouping_diabetes PASSED                [ 34%]
+tests/test_project.py::test_icd9_grouping_circulatory PASSED             [ 39%]
+tests/test_project.py::test_icd9_grouping_v_e_codes PASSED               [ 43%]
+tests/test_project.py::test_icd9_grouping_missing PASSED                 [ 47%]
+tests/test_project.py::test_icd9_grouping_decimal_subcodes PASSED        [ 52%]
+tests/test_project.py::test_target_recoding PASSED                       [ 56%]
+tests/test_project.py::test_expired_hospice_excluded PASSED              [ 60%]
+tests/test_project.py::test_unknown_invalid_gender_excluded PASSED       [ 65%]
+tests/test_project.py::test_question_mark_recoded_to_unknown PASSED      [ 69%]
+tests/test_project.py::test_risk_tier_boundaries PASSED                  [ 73%]
+tests/test_project.py::test_model_file_exists PASSED                     [ 78%]
+tests/test_project.py::test_model_loads PASSED                           [ 82%]
+tests/test_project.py::test_prediction_output_format PASSED              [ 86%]
+tests/test_project.py::test_prediction_handles_missing_input PASSED      [ 91%]
+tests/test_project.py::test_prediction_handles_invalid_numeric_input PASSED [ 95%]
+tests/test_project.py::test_prediction_identifiers_not_used PASSED       [100%]
+======================== 23 passed, 1 warning in 4.41s =========================

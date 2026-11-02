@@ -62,14 +62,14 @@ terminal.**
 ## Step 4 — Install the libraries
 
 ```
-python -m pip install --default-timeout=120 --retries 10 -r requirements-app.txt
+python -m pip install --default-timeout=120 --retries 10 -r requirements.txt
 ```
 
 This installs only what the app needs (a few hundred MB). If your internet is slow and it stops with a
 "timed out" error, **just run the same command again**: it continues from what it already downloaded.
 
-> Want the full notebook environment too (Jupyter, XGBoost, SHAP)? Use `requirements.txt` instead. It is
-> much bigger.
+> Want the notebook environment too (Jupyter, XGBoost, SHAP)? Use `requirements-notebook.txt` instead. It is
+> much bigger. For the FastAPI service use `requirements-api.txt`.
 
 ## Step 5 — Run the app
 

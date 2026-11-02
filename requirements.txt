@@ -1,28 +1,16 @@
-# Python 3.10+ (re-run verified on Python 3.12; the group's Google Colab run used Python 3.13).
+# Core install: everything needed to run the web app (app.py), the prediction code (src/) and the tests.
+# This is also the file Streamlit Community Cloud reads when the app is deployed.
 #
-# The saved model (models/final_model.joblib) is a pickle: load it with the same scikit-learn and
-# LightGBM versions it was saved with, which are pinned below.
-
-# --- core (needed by the notebook, src/ and tests/) ---
+# Python 3.10 - 3.13 (3.12 recommended). The saved model is a pickle, so the exact scikit-learn and
+# LightGBM versions below matter.
 pandas==2.2.3
 numpy>=1.26,<2.3
 scikit-learn==1.6.1
 lightgbm==4.7.0
-matplotlib>=3.7
-seaborn>=0.12
 joblib>=1.3
-
-# --- notebook extras (Sections 6.2b, Interpretability, 8.4) ---
-xgboost>=2.0
-shap>=0.44
-ipywidgets>=8
-jupyter
-
-# --- prototype and tests ---
 streamlit>=1.28
-pytest>=7.4
 
-# Versions used for the independent re-run that regenerated models/final_model.joblib:
-# numpy 2.2.6, pandas 2.2.3, scikit-learn 1.6.1, lightgbm 4.7.0, xgboost 3.4.1, shap 0.53.0,
-# matplotlib 3.10.8, seaborn 0.13.2, joblib 1.6.0, ipywidgets 8.1.9, streamlit 1.66.0, pytest 9.1.1.
-# In Google Colab the core packages are preinstalled; the notebook installs shap / ipywidgets if missing.
+# Optional extras, each in its own file:
+#   requirements-notebook.txt  -> the Jupyter notebook (charts, XGBoost, SHAP, widgets)
+#   requirements-api.txt       -> the FastAPI service (api.py) and its tests
+#   requirements-mlflow.txt    -> experiment tracking (scripts/log_experiments_mlflow.py)

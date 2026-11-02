@@ -12,6 +12,27 @@ readmitted within 30 days of discharge. It is built on the UCI *Diabetes 130-US 
 > validated for real-world patient care. The data are U.S. hospital records from 1999–2008; the model
 > must not be assumed to generalize to modern hospitals or to other countries or health systems.
 
+## Module 6 portfolio: where to find everything
+
+**Live demo (Streamlit Community Cloud):** STREAMLIT_URL_HERE
+**Source code (GitHub):** <https://github.com/tsega-ab1/diabetic-readmission-risk>
+**Presentation video:** submitted as a separate file in Canvas (script: `docs/VIDEO_SCRIPT.md`).
+
+| Module 6 requirement | Where |
+|---|---|
+| Working prototype and demonstration | `app.py` (Streamlit), `api.py` (FastAPI), `docs/APP_GUIDE.md` (plain-language guide and demo steps) |
+| Testing, deployment, experiment tracking | `docs/DEPLOYMENT_AND_TESTING.md`, `docs/EXPERIMENT_TRACKING.md`, `docs/evidence/`, `tests/`, `scripts/log_experiments_mlflow.py` |
+| Monitoring, support and maintenance plan | `docs/MONITORING_SUPPORT_MAINTENANCE_PLAN.md` |
+| Setup and run instructions | this README, `docs/SETUP_FOR_TEAMMATES.md` |
+| Screenshots | `docs/screenshots/` |
+| Simulated data statement (Deliverable D) | `docs/SIMULATED_DATA_STATEMENT.md` (**no simulated data** is used for training, testing or evaluation) |
+| One-page retrospective (Deliverable C) | `docs/RETROSPECTIVE.md` / `.pdf` |
+| Group members and responsibilities | "Team members and contributions" below |
+
+**Quick run:** `python -m pip install -r requirements.txt` then `streamlit run app.py`.
+Extras: `requirements-api.txt` (FastAPI), `requirements-mlflow.txt` (MLflow), `requirements-notebook.txt` (Jupyter).
+The free Streamlit server sleeps when idle: if the live link shows a "wake up" button, press it and wait about 30 seconds.
+
 ## Quick start for teammates
 
 New to the project? Start here:
@@ -25,7 +46,7 @@ New to the project? Start here:
 git clone https://github.com/tsega-ab1/diabetic-readmission-risk.git
 cd diabetic-readmission-risk
 python3 -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
-python -m pip install -r requirements-app.txt
+python -m pip install -r requirements.txt
 streamlit run app.py
 ```
 
@@ -53,8 +74,9 @@ streamlit run app.py
 | Project report | `PROJECT_REPORT.pdf` / `PROJECT_REPORT.docx` |
 | README | this file |
 | Dataset | `data/diabetic_data.csv`, `data/IDS_mapping.csv` (see `DATA_DICTIONARY.md`) |
-| Requirements | `requirements.txt` (everything) and `requirements-app.txt` (app and tests only) |
-| Guides | `docs/APP_GUIDE.md` (plain-language app guide), `docs/SETUP_FOR_TEAMMATES.md` |
+| Requirements | `requirements.txt` (app, prediction code, tests), plus `requirements-notebook.txt`, `requirements-api.txt`, `requirements-mlflow.txt` |
+| Guides and Module 6 documents | `docs/` (app guide, setup guide, deployment and testing, monitoring plan, statement, retrospective, video script) |
+| Container | `Dockerfile`, `.dockerignore` |
 | Saved model + metadata | `models/final_model.joblib`, `models/model_metadata.json` |
 | Prototype | in-notebook form (Section 8.4) and `app.py` (Streamlit) |
 | Shared code and tests | `src/` (`data_preprocessing.py`, `predict.py`), `tests/`, `scripts/` |
@@ -79,7 +101,7 @@ streamlit run app.py
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+pip install -r requirements-notebook.txt
 jupyter notebook notebooks/module5_ai_project_colab.ipynb   # run from the project root
 ```
 
@@ -97,13 +119,31 @@ and `outputs/` there. The stored outputs in the notebook are from the group's Co
 ## Running the tests
 
 ```bash
-pytest tests/                                   # if pytest is installed
-python3 scripts/run_tests_without_pytest.py     # equivalent runner with no extra dependency
+python3 scripts/run_tests_without_pytest.py     # 16 unit tests; works with the core install (requirements.txt)
+pip install -r requirements-api.txt             # adds pytest, FastAPI and httpx
+python -m pytest tests -v                       # all 23 tests (16 unit + 7 API)
 ```
 
-16 tests cover preprocessing, ICD-9 grouping, leakage exclusions, risk-tier boundaries, model loading,
-prediction output format, and invalid/missing input handling. The notebook also contains 10 in-notebook
-unit tests and 7 end-to-end workflow cases (all passed in the Colab run).
+The 16 unit tests cover preprocessing, ICD-9 grouping, leakage exclusions, risk-tier boundaries, model loading,
+prediction output format, and invalid/missing input handling; the 7 API tests cover `api.py`. The notebook also
+contains 10 in-notebook unit tests and 7 end-to-end workflow cases (all passed in the Colab run). Saved output
+of these runs is in `docs/evidence/`.
+
+## API and container (Module 6)
+
+```bash
+pip install -r requirements-api.txt
+python -m uvicorn api:app --port 8000          # then open http://localhost:8000/docs
+docker build -t readmission-risk . && docker run --rm -p 8501:8501 readmission-risk   # optional
+```
+
+## Experiment tracking (Module 6)
+
+```bash
+pip install -r requirements-mlflow.txt
+python scripts/log_experiments_mlflow.py       # also writes outputs/results/experiment_log.csv
+mlflow ui --backend-store-uri sqlite:///mlflow.db   # open http://localhost:5000 (can take a minute to start)
+```
 
 ## Model information
 

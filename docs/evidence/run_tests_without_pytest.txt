@@ -1,0 +1,22 @@
+============================================================
+Collected 16 tests
+============================================================
+PASSED  test_icd9_grouping_diabetes
+PASSED  test_icd9_grouping_circulatory
+PASSED  test_icd9_grouping_v_e_codes
+PASSED  test_icd9_grouping_missing
+PASSED  test_icd9_grouping_decimal_subcodes
+PASSED  test_target_recoding
+PASSED  test_expired_hospice_excluded
+PASSED  test_unknown_invalid_gender_excluded
+PASSED  test_question_mark_recoded_to_unknown
+PASSED  test_risk_tier_boundaries
+PASSED  test_model_file_exists
+PASSED  test_model_loads
+PASSED  test_prediction_output_format
+PASSED  test_prediction_handles_missing_input
+PASSED  test_prediction_handles_invalid_numeric_input
+PASSED  test_prediction_identifiers_not_used
+============================================================
+16 passed, 0 failed, 0 errors out of 16
+============================================================

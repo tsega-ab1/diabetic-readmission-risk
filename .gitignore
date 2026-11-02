@@ -15,3 +15,8 @@ Thumbs.db
 # local secrets / logs
 .streamlit/secrets.toml
 *.log
+
+# MLflow local store (recreate with scripts/log_experiments_mlflow.py)
+mlflow.db
+mlartifacts/
+mlruns/

@@ -1,0 +1,59 @@
+# Real HTTP session against the running API (uvicorn, localhost:8000)
+# Recorded on 2026-11-02 with the shipped model models/final_model.joblib
+
+$ curl -s localhost:8000/health
+{"status":"ok","model_loaded":true,"model_name":"LightGBM"}
+
+$ curl -s localhost:8000/model-info
+{
+    "model_name": "LightGBM",
+    "decision_threshold": 0.51,
+    "risk_tier_thresholds": {
+        "low_below": 0.42,
+        "medium_below": 0.6
+    },
+    "n_features": 46,
+    "test_metrics": {
+        "roc_auc": 0.6856,
+        "pr_auc": 0.239,
+        "recall": 0.5289,
+        "precision": 0.2014,
+        "f1": 0.2917,
+        "accuracy": 0.7095,
+        "confusion_matrix": [
+            [
+                9653,
+                3525
+            ],
+            [
+                792,
+
+$ curl -s -X POST localhost:8000/predict -d @outputs/results/sample_typical_request.json   # typical real test-set row
+{
+    "risk_score": 0.4857,
+    "risk_tier": "Medium",
+    "high_risk_flag": false,
+    "decision_threshold": 0.51,
+    "input_warnings": [],
+    "ignored_fields": [],
+    "disclaimer": "Academic demonstration only. Not a medical diagnosis, not a substitute for clinical judgment, and not clinically validated. The score ranks patients; it is not a literal probability."
+}
+
+$ ... same record with race="Martian", number_inpatient=90 and an identifier added   # synthetic error-handling test input
+{
+  "risk_score": 0.8381,
+  "risk_tier": "High",
+  "high_risk_flag": true,
+  "decision_threshold": 0.51,
+  "input_warnings": [
+    "Value 90 for 'number_inpatient' is outside the range seen in training (0-21); the prediction may be unreliable",
+    "Unexpected category 'Martian' for 'race' (not seen in training); it is treated as unknown"
+  ],
+  "ignored_fields": [
+    "patient_nbr"
+  ],
+  "disclaimer": "Academic demonstration only. Not a medical diagnosis, not a substitute for clinical judgment, and not clinically validated. The score ranks patients; it is not a literal probability."
+}
+
+$ curl -s -X POST localhost:8000/predict -d {"record":"oops"}   # malformed request
+HTTP status: 422
